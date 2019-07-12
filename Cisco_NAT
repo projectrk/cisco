@@ -1,15 +1,18 @@
 #!/bin/bash
 echo "Cisco NAT Configuration"
 echo
+echo "WAN Configuration"
 read -p 'WAN Interface: ' wanif
 read -p 'WAN IP: ' wanip
 read -p 'WAN MASK: ' wansn
+echo
+echo "LAN Configuration"
 read -p 'LAN Interface: ' lanif
 read -p 'LAN IP: ' lanip
 read -p 'LAN MASK: ' lansn
 echo
 echo "
-SOF
+[SOF]
 
 conf t
 en
@@ -31,8 +34,12 @@ end
 wr
 !
 
-EOF
+[EOF]
 "
-echo "!!! NAT pool name is case sensitive"
+printf "
+!!! NAT pool name is case sensitive
+* WAN is mostly the NAT outside - Internet facing
+* LAN is mostly the NAT inside - Local facing
+"
 echo
 read -p '[Press ENTER key to exit]'
