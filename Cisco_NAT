@@ -1,6 +1,6 @@
 #!/bin/bash
 echo 'Cisco NAT'
-print 'SOF
+printf 'SOF
 
 conf t
 en
