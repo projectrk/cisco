@@ -1,0 +1,27 @@
+#!/bin/bash
+echo 'Cisco NAT'
+print 'SOF
+
+conf t
+en
+hostname NAT-R
+int f0/1
+ ip address 1.1.1.254 255.255.255.0
+ no shut
+ ip nat outside
+int f0/0
+ ip address 192.168.1.254 255.255.255.0
+ no shut
+ ip nat inside
+exit
+!
+ip nat pool projectrk 1.1.1.254 1.1.1.254 netmask 255.255.255.0
+access-list 1 permit 192.168.1.0 0.0.0.255
+ip nat inside source list 1 pool projectrk overload
+end
+wr
+!
+
+EOF
+'
+read -p 'Press ENTER key to exit'
