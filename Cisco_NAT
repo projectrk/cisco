@@ -11,6 +11,7 @@ read -p 'LAN Interface: ' lanif
 read -p 'LAN IP: ' lanip
 read -p 'LAN MASK: ' lansn
 echo
+read -p 'NAT Pool Name: ' natpname
 echo "
 [SOF]
 
@@ -27,9 +28,9 @@ int $lanif
  ip nat inside
 exit
 !
-ip nat pool natpoolname $wanip $wanip netmask $wansn
+ip nat pool $natpname $wanip $wanip netmask $wansn
 access-list 1 permit $lanip 0.0.0.255
-ip nat outside source list 1 pool natpoolname overload
+ip nat outside source list 1 pool $natpname overload
 end
 wr
 !
