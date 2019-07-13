@@ -29,7 +29,7 @@ exit
 !
 ip nat pool natpoolname $wanip $wanip netmask $wansn
 access-list 1 permit $lanip 0.0.0.255
-ip nat inside source list 1 pool natpoolname overload
+ip nat outside source list 1 pool natpoolname overload
 end
 wr
 !
